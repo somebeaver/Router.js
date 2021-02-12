@@ -23,10 +23,8 @@
  * action isn't possible (yet).
  */
 import { routeMatcher } from './route-matching-algorithm.js'
-
-// TODO remove these deps
 import __ from '../double-u/index.js'
-import html from '../html.js/index.js'
+import { html, getFileContents } from '../html.js/index.js'
 
 export class Router {
   constructor(options) {
@@ -383,7 +381,7 @@ export class Router {
       else {
         //if (Bridge.appDebug) console.log('%cLoading view from file', `color:${this.consoleColor};`)
 
-        viewHtml = await __().getFileContents(`/views/${viewFile}`)
+        viewHtml = await getFileContents(`/views/${viewFile}`)
         let modelData = null
       
         // maybe load the model
