@@ -22,7 +22,7 @@ will handle the state of any view window (DOM Element) that you give it.
 - Child routes
 - Automatically handles `<a>`'s in the DOM
 - Internationalization
-  - Supports any number of lanauges
+  - Supports any number of languages
   - Can hot swap languages
 
 ## API Reference
