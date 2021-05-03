@@ -4,7 +4,7 @@
 [Cardinal apps](https://cardinalapps.xyz).*
 
 Router.js is a dependency-free ES6 JavaScript library that provides
-unopinionated view router functionality.
+unopinionated router functionality for single-page apps.
 
 An instance of the `Router` object is designed to live in the `window`, and it
 will handle the state of any view window (DOM Element) that you give it.
