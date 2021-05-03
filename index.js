@@ -1,6 +1,5 @@
 /**
- * @module
- * @typicalname Router
+ * @module Router
  */
 import { routeMatcher } from './route-matching-algorithm.js'
 

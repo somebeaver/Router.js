@@ -1,18 +1,18 @@
-<a name="module_index"></a>
+<a name="module_Router"></a>
 
-## index
+## Router
 
-* [index](#module_index)
-    * [.Router](#module_index.Router)
-        * [.go()](#module_index.Router+go)
-        * [.refresh([hardRefresh])](#module_index.Router+refresh)
-        * [.back([steps])](#module_index.Router+back)
-        * [.forward([steps])](#module_index.Router+forward)
-        * [.setLang()](#module_index.Router+setLang)
-        * [.deleteHistory()](#module_index.Router+deleteHistory)
-        * [.deleteViewCache()](#module_index.Router+deleteViewCache)
+* [Router](#module_Router)
+    * [.Router](#module_Router.Router)
+        * [.go()](#module_Router.Router+go)
+        * [.refresh([hardRefresh])](#module_Router.Router+refresh)
+        * [.back([steps])](#module_Router.Router+back)
+        * [.forward([steps])](#module_Router.Router+forward)
+        * [.setLang()](#module_Router.Router+setLang)
+        * [.deleteHistory()](#module_Router.Router+deleteHistory)
+        * [.deleteViewCache()](#module_Router.Router+deleteViewCache)
 
-<a name="module_index.Router"></a>
+<a name="module_Router.Router"></a>
 
 ### Router.Router
 Router class for Echoes. The router only cares about it's #root and cannot
@@ -36,18 +36,18 @@ to a value, eg. `/artist/:id`.
 TODO switch app lang when a route from another lang is requested, but that
 action isn't possible (yet).
 
-**Kind**: static class of [<code>index</code>](#module_index)  
+**Kind**: static class of [<code>Router</code>](#module_Router)  
 
-* [.Router](#module_index.Router)
-    * [.go()](#module_index.Router+go)
-    * [.refresh([hardRefresh])](#module_index.Router+refresh)
-    * [.back([steps])](#module_index.Router+back)
-    * [.forward([steps])](#module_index.Router+forward)
-    * [.setLang()](#module_index.Router+setLang)
-    * [.deleteHistory()](#module_index.Router+deleteHistory)
-    * [.deleteViewCache()](#module_index.Router+deleteViewCache)
+* [.Router](#module_Router.Router)
+    * [.go()](#module_Router.Router+go)
+    * [.refresh([hardRefresh])](#module_Router.Router+refresh)
+    * [.back([steps])](#module_Router.Router+back)
+    * [.forward([steps])](#module_Router.Router+forward)
+    * [.setLang()](#module_Router.Router+setLang)
+    * [.deleteHistory()](#module_Router.Router+deleteHistory)
+    * [.deleteViewCache()](#module_Router.Router+deleteViewCache)
 
-<a name="module_index.Router+go"></a>
+<a name="module_Router.Router+go"></a>
 
 #### router.go()
 Performs a regular navigation towards a href. Using this method will always add
@@ -67,55 +67,55 @@ history would now look like this:
     ['/albums', '/artist/34', '/album/10', '/track/50']
                                                 ^ you are here
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
-<a name="module_index.Router+refresh"></a>
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
+<a name="module_Router.Router+refresh"></a>
 
 #### router.refresh([hardRefresh])
 Refreshes the current route.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [hardRefresh] | <code>boolean</code> | <code>true</code> | Defaults to `true`. |
 
-<a name="module_index.Router+back"></a>
+<a name="module_Router.Router+back"></a>
 
 #### router.back([steps])
 Navigates to a route in the history. Has no effect if you're already on the oldest view.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [steps] | <code>number</code> | <code>1</code> | The number of steps to go back. Default is 1. |
 
-<a name="module_index.Router+forward"></a>
+<a name="module_Router.Router+forward"></a>
 
 #### router.forward([steps])
 Navigates forward through the history. Has no effect if you're already on the latest view.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [steps] | <code>number</code> | <code>1</code> | The number of steps to go forward. Default is 1. |
 
-<a name="module_index.Router+setLang"></a>
+<a name="module_Router.Router+setLang"></a>
 
 #### router.setLang()
 Changes the langugage and erases all cache.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
-<a name="module_index.Router+deleteHistory"></a>
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
+<a name="module_Router.Router+deleteHistory"></a>
 
 #### router.deleteHistory()
 Deletes all navigation history for this session.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
-<a name="module_index.Router+deleteViewCache"></a>
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
+<a name="module_Router.Router+deleteViewCache"></a>
 
 #### router.deleteViewCache()
 Deletes all internal view cache for this session.
 
-**Kind**: instance method of [<code>Router</code>](#module_index.Router)  
+**Kind**: instance method of [<code>Router</code>](#module_Router.Router)  
