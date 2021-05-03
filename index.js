@@ -18,16 +18,6 @@ import { html, getFileContents } from '../html.js/index.js'
  *
  * Hold cmd while clicking a link to perform a hard refresh of that view.
  *
- * Terminology:
- *
- * `href` = The url to be parsed. Current lanauge will be maintained when a lang
- * slug is not present. Dynamic parts are expected to be mapped into values, eg.
- * `/artist/3` instead of `/artist/:id`
- *
- * `route` = The rule to check the href against. Each route supports each
- * language specified in `Router.langs`. Dynamic parts in a route are not mapped
- * to a value, eg. `/artist/:id`.
- *
  * TODO switch app lang when a route from another lang is requested, but that
  * action isn't possible (yet).
  */

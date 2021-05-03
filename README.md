@@ -4,13 +4,14 @@
 [Cardinal apps](https://cardinalapps.xyz).*
 
 Router.js is a dependency-free ES6 JavaScript library that provides
-unopinionated router functionality for single-page apps.
+unopinionated MVC style router functionality for single-page apps.
 
 An instance of the `Router` object is designed to live in the `window`, and it
 will handle the state of any view window (DOM Element) that you give it.
 
 ## Features
 
+- MVC architecture
 - Navigation history
   - Refresh
   - Back
@@ -29,6 +30,49 @@ will handle the state of any view window (DOM Element) that you give it.
 
 A reference of all public Router.js methods is available in
 **[DOCS.md](DOCS.md)**.
+
+## Terminology
+
+### `href`
+
+The url to be parsed. Current lanauge will be maintained when a lang slug is not
+present. Dynamic parts are expected to be mapped into values, eg.
+
+```
+`/artist/3` instead of `/artist/:id`
+```
+
+### `route`
+
+The rule to check the `href` against. Each route supports each language
+specified in `Router.langs`.
+
+```
+`/artist/:id`.
+```
+
+### MVC Architecture
+
+Router.js loads pages with a loosely based MVC approach. For each route there is an
+optional model, and a required view. Since Router.js is designed to be used with
+Lowrider.js, it lets Lowrider.js components be the "C" in MVC.
+
+- **M**: Your `.js` file defined by the route.
+- **V**: Your `.html` file, with model data available to it.
+- **C**: Web components that handle being loaded in the view with the model data.
+
+## Routes
+
+Routes should be defined as an array of objects. Example object:
+
+```javascript
+{
+  "route": "/playlist/:id",
+  "view": "playlist.html",
+  "model": "playlist", // optional
+  "parent": "/playlists" // optional
+},
+```
 
 ## License
 
