@@ -1,6 +1,16 @@
 /**
- * @file
- *
+ * @module
+ * @typicalname Router
+ */
+import { routeMatcher } from './route-matching-algorithm.js'
+
+// replace with vanilla js
+import __ from '../double-u/index.js'
+
+// TODO make this an injected dependency
+import { html, getFileContents } from '../html.js/index.js'
+
+/**
  * Router class for Echoes. The router only cares about it's #root and cannot
  * change any content outside of it (except for elements that are
  * `.router-link`).
@@ -22,10 +32,6 @@
  * TODO switch app lang when a route from another lang is requested, but that
  * action isn't possible (yet).
  */
-import { routeMatcher } from './route-matching-algorithm.js'
-import __ from '../double-u/index.js'
-import { html, getFileContents } from '../html.js/index.js'
-
 export class Router {
   constructor(options) {
     let requiredOptions = ['mode', 'root', 'routes', 'langs', 'defaultLang']
@@ -210,8 +216,10 @@ export class Router {
 
   /**
    * Sets the scroll top of the view content with an optional delay.
-   * 
-   * @param {number} [historyIndex] - The array index of the history entry whose scrollTop to use. Defaults to the current index.
+   *
+   * @param {number} [historyIndex] - The array index of the history entry whose
+   * scrollTop to use. Defaults to the current index.
+   * @ignore
    */
   _setScrollTop(historyIndex = null) {
     if (historyIndex === null) historyIndex = this._currentIndexInHistory
@@ -224,6 +232,8 @@ export class Router {
 
   /**
    * Uses the given routes to build the routes object used internally by the router.
+   * 
+   * @ignore
    */
   _buildRoutesReference() {
     let routesReference = []
@@ -244,6 +254,8 @@ export class Router {
 
   /**
    * Uses the given routes to build an object of views and their associated route.
+   * 
+   * @ignore
    */
   _buildViewsObject() {
     let viewsObject = {}
@@ -259,6 +271,8 @@ export class Router {
 
   /**
    * Uses the given routes to build an object of models and their associated route.
+   * 
+   * @ignore
    */
   _buildModelsObject() {
     let modelsObject = {}
@@ -279,7 +293,8 @@ export class Router {
    * If a valid route is found, this will extract the params.
    * 
    * @param {string} - A href, language optional. Eg. `/artists/121`.
-   * @return {(object|boolean}} Null if the href is not valid, otherwise an object containing route data.
+   * @return {(object|boolean)} Null if the href is not valid, otherwise an object containing route data.
+   * @ignore
    */
   _isValidHref(href) {
     if (href === undefined || href === '' || typeof href !== 'string') {
@@ -333,6 +348,7 @@ export class Router {
    * only for updating the .router-link's. Use `Router.go()` for href validation.
    * @param {object} params - Route parametes as parsed by the algo. They will get added as attributes to #view.
    * @param {boolean} hardRefresh - Set to true to forcefully reload the view HTML from the file.
+   * @ignore
    */
   async _loadRoute(route, href, params, hardRefresh = false) {
     return new Promise(async (resolve, reject) => {
@@ -420,6 +436,8 @@ export class Router {
 
   /**
    * Finds all router links in the DOM and updates their state according to the current route.
+   * 
+   * @ignore
    */
   _setRouterLinkActiveStates() {
     // remove active state of all router links
@@ -463,6 +481,7 @@ export class Router {
    * Adds a href to the internal history and ensures that the array does not exceed this._maxHistoryEntries.
    * 
    * @param {string} href - Href to add.
+   * @ignore
    */
   _addToHistory(href) {
     let historyObj = {
@@ -482,6 +501,8 @@ export class Router {
   /**
    * This is called before the router navigates away from the current view; it will save the current
    * scrollTop so that it can be used when navigating back to this item in the history.
+   * 
+   * @ignore
    */
   _saveScrollTopBeforeNavAway() {
     let viewContent = document.querySelector(this.viewContentSelector)
@@ -495,6 +516,8 @@ export class Router {
 
   /**
    * Registers the event handlers that the router listens for.
+   * 
+   * @ignore
    */
   _registerEventHandlers() {
     let router = this
