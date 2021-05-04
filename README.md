@@ -58,7 +58,7 @@ optional model, and a required view. Since Router.js is designed to be used with
 Lowrider.js, it lets Lowrider.js components be the "C" in MVC.
 
 - **M**: Your `.js` file defined by the route.
-- **V**: Your `.html` file, with model data available to it.
+- **V**: Your `.html` file. Model data is made available to it.
 - **C**: Web components that handle being loaded in the view with the model data.
 
 ## Routes
@@ -72,6 +72,33 @@ Routes should be defined as an array of objects. Example object:
   "model": "playlist", // optional
   "parent": "/playlists" // optional
 },
+```
+
+## Examples
+
+### Initialization
+
+```javascript
+window.Router = new Router({
+  'root': '#view',
+  'mode': 'electron',
+  'langs': ['en', 'fr'],
+  'defaultLang': 'en',
+  'cacheViews': true,
+  'currentLang': 'en',
+  'routes': [
+    {
+      "route": "/playlists",
+      "view": "playlists.html"
+    },
+    {
+      "route": "/playlist/:id",
+      "view": "playlist.html",
+      "model": "playlist",
+      "parent": "/playlists"
+    }
+  ]
+})
 ```
 
 ## License
