@@ -51,7 +51,7 @@ specified in `Router.langs`.
 `/artist/:id`.
 ```
 
-### MVC Architecture
+## MVC Architecture
 
 Router.js loads pages with a loosely based MVC approach. For each route there is an
 optional model, and a required view. Since Router.js is designed to be used with
@@ -72,6 +72,18 @@ Routes should be defined as an array of objects. Example object:
   "model": "playlist", // optional
   "parent": "/playlists" // optional
 },
+```
+
+## Links
+
+Linking to other views is easy, just add the class `router-link` to `<a>`'s.
+Router.js will automatically handle event delegation for `<a>`'s that do not yet
+exist in the DOM.
+
+```html
+<a href="/playlist/3" class="router-link">
+  Go To Playlist 3
+</a>
 ```
 
 ## Examples
