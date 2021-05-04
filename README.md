@@ -71,7 +71,7 @@ Routes should be defined as an array of objects. Example object:
   "view": "playlist.html",
   "model": "playlist", // optional
   "parent": "/playlists" // optional
-},
+}
 ```
 
 ## Links
