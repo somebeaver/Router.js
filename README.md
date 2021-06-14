@@ -14,17 +14,25 @@ will handle the state of any view window (DOM Element) that you give it.
 - MVC architecture
 - Navigation history
   - Refresh
-  - Back
-  - Forward
+  - Hard refresh
+  - Back/Forward
   - Configurable max number of items
   - Remembers scroll position for each page
-- RESTful parameter substitution
-- View caching (optimized for [Lowrider.js](https://github.com/somebeaver/Lowrider.js))
-- Child routes
-- Automatically handles `<a>`'s in the DOM
+- Dynamic RESTful parameter substitution (`/example/:type/:id`)
+- View caching
+- Native ES6 modules for route models
+- Route definitions as a linked list
+- Pluggable functions
+  - For easy integration with the template engine of your choice
+  - For template lookups
+- Automatically handles all `<a>`'s in the DOM
 - Internationalization
   - Supports any number of languages
   - Can hot swap languages
+- Supports mouse button back/forward navigation for macOS users that use a
+  non-Apple mouse with [BetterTouchTool](https://folivora.ai/) and/or
+  [SensibleSideButtons](https://sensible-side-buttons.archagon.net/) button remapping.
+- Detects Apple Magic Mouse left/right swipes and triggers back/forward events.
 
 ## API Reference
 
@@ -53,13 +61,14 @@ specified in `Router.langs`.
 
 ## MVC Architecture
 
-Router.js loads pages with a loosely based MVC approach. For each route there is an
-optional model, and a required view. Since Router.js is designed to be used with
-Lowrider.js, it lets Lowrider.js components be the "C" in MVC.
+Router.js loads pages with an MVC approach. For each route there is an
+optional model, and a required view.
 
-- **M**: Your `.js` file defined by the route.
-- **V**: Your `.html` file. Model data is made available to it.
-- **C**: Web components that handle being loaded in the view with the model data.
+- **M**: A `.js` file defined by the route.
+- **V**: A `.html` file. Model data is made available to it.
+- **C**: Developer choice. Could be a static page, React components,
+  [Lowrider.js](https://github.com/somebeaver/Lowrider.js) components or
+  anything else that the user is meant to interact with.
 
 ## Routes
 
@@ -96,8 +105,8 @@ window.Router = new Router({
   'mode': 'electron',
   'langs': ['en', 'fr'],
   'defaultLang': 'en',
-  'cacheViews': true,
   'currentLang': 'en',
+  'cacheViews': true,
   'routes': [
     {
       "route": "/playlists",
