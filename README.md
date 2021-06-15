@@ -6,22 +6,17 @@
 Router.js is a dependency-free ES6 JavaScript library that provides
 unopinionated MVC style router functionality for single-page apps.
 
-An instance of the `Router` object is designed to live in the `window`, and it
-will handle the state of any view window (DOM Element) that you give it.
-
 ## Features
 
 - MVC architecture
 - Navigation history
-  - Refresh
-  - Hard refresh
+  - Refresh/hard refresh
   - Back/Forward
   - Configurable max number of items
   - Remembers scroll position for each page
 - Dynamic RESTful parameter substitution (`/example/:type/:id`)
 - View caching
 - Native ES6 modules for route models
-- Route definitions as a linked list
 - Pluggable functions
   - For easy integration with the template engine of your choice
   - For template lookups
@@ -100,9 +95,8 @@ exist in the DOM.
 ### Initialization
 
 ```javascript
-window.Router = new Router({
+const router = new Router({
   'root': '#view',
-  'mode': 'electron',
   'langs': ['en', 'fr'],
   'defaultLang': 'en',
   'currentLang': 'en',
@@ -121,6 +115,19 @@ window.Router = new Router({
   ]
 })
 ```
+
+## Testing
+
+You need `npm` and Node.js to run router.js tests.
+
+To start an Express server that delivers the test suite to a browser, run:
+
+```
+$ npm run ./test/test-env.js
+```
+
+Then navigate to `http://localhost:3000` in any browser. The tests will
+automatically run and the results will be shown on the page.
 
 ## License
 

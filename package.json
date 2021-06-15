@@ -4,9 +4,11 @@
   "author": "somebeaver",
   "private": true,
   "scripts": {
-    "docs": "jsdoc2md index.js > DOCS.md"
+    "test": "./test/server/server.js",
+    "docs": "jsdoc2md src/Router.js > DOCS.md"
   },
   "devDependencies": {
+    "express": "^4.17.1",
     "jsdoc-to-markdown": "^6.0.0"
   }
 }

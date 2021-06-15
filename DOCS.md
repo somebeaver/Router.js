@@ -4,6 +4,7 @@
 
 * [Router](#module_Router)
     * [.Router](#module_Router.Router)
+        * [new exports.Router(options)](#new_module_Router.Router_new)
         * [.go()](#module_Router.Router+go)
         * [.refresh([hardRefresh])](#module_Router.Router+refresh)
         * [.back([steps])](#module_Router.Router+back)
@@ -15,20 +16,10 @@
 <a name="module_Router.Router"></a>
 
 ### Router.Router
-Router class for Echoes. The router only cares about it's #root and cannot
-change any content outside of it (except for elements that are
-`.router-link`).
-
-Routes will be matched in their given order.
-
-Hold cmd while clicking a link to perform a hard refresh of that view.
-
-TODO switch app lang when a route from another lang is requested, but that
-action isn't possible (yet).
-
 **Kind**: static class of [<code>Router</code>](#module_Router)  
 
 * [.Router](#module_Router.Router)
+    * [new exports.Router(options)](#new_module_Router.Router_new)
     * [.go()](#module_Router.Router+go)
     * [.refresh([hardRefresh])](#module_Router.Router+refresh)
     * [.back([steps])](#module_Router.Router+back)
@@ -36,6 +27,24 @@ action isn't possible (yet).
     * [.setLang()](#module_Router.Router+setLang)
     * [.deleteHistory()](#module_Router.Router+deleteHistory)
     * [.deleteViewCache()](#module_Router.Router+deleteViewCache)
+
+<a name="new_module_Router.Router_new"></a>
+
+#### new exports.Router(options)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>object</code> |  |
+| options.root | <code>string</code> | A CSS selector for the root Element in which all views will be injected. |
+| options.routes | <code>Array</code> | An array of route objects. Routes will be matched in the order they appear in the array. |
+| options.langs | <code>Array</code> | An array of lanauge slugs. |
+| options.defaultLang | <code>string</code> |  |
+| [options.cacheViews] | <code>string</code> | Enable or disable the caching of views. All view loads will be hard reloads. Defaults to `false`. |
+| [options.models] | <code>object</code> | A key:value object of models, with keys being the model name, and the values being the location of the `.js` file. |
+| [options.scrollTopDelay] | <code>number</code> | When loading a cached view, this is the number of ms to wait before attempting to scroll back to the position that the user left off at. Defaults to 0, which is still one event loop tick. |
+| [options.maxHistoryEntries] | <code>number</code> | Max number of items in the history. Defaults to 50. |
+| [options.templateGetter] | <code>function</code> | Optional pluggable function that receives view template file location (string), and returns its raw contents. File contents are cached, so this function will only ever get called once per route load per session. |
+| [options.templateProcessor] | <code>function</code> | Optional pluggable function that receives the raw template HTML and processes it. Use this function to run the template through ejs, pug, handlebars, or whatever else. Does not get called when the view is being loaded from the cache. |
 
 <a name="module_Router.Router+go"></a>
 

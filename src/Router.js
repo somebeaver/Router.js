@@ -42,13 +42,12 @@ export class Router {
    * get called when the view is being loaded from the cache.
    */
   constructor(options) {
-    let requiredOptions = ['mode', 'root', 'routes', 'langs', 'defaultLang']
+    let requiredOptions = ['root', 'routes', 'langs', 'defaultLang']
 
     requiredOptions.forEach((opt) => {
       if (!options.hasOwnProperty(opt)) throw new Error(`Router requires ${opt} on init`)
     })
 
-    this.mode = options.mode
     this.root = options.root
     this.buttonSelector = '.router-link'
     this.viewContentSelector = '.view-content'
