@@ -59,8 +59,8 @@ specified in `Router.langs`.
 Router.js loads pages with an MVC approach. For each route there is an
 optional model, and a required view.
 
-- **M**: A `.js` file defined by the route.
-- **V**: A `.html` file. Model data is made available to it.
+- **M**: `.js` file defined by the route.
+- **V**: `.html` file. Model data is made available to it.
 - **C**: Developer choice. Could be a static page, React components,
   [Lowrider.js](https://github.com/somebeaver/Lowrider.js) components or
   anything else that the user is meant to interact with.
