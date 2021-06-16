@@ -117,14 +117,15 @@ const router = new Router({
 
 ## Testing
 
-You need `npm`, Node.js, and VSCode (or equivalent) to run the test suite.
+Testing is done using
+[es6-test-tools](https://github.com/somebeaver/es6-test-tools). To start an
+Express server that delivers the test suite to any browser, run:
 
-1. Clone the repo
-2. Run `npm i`
-3. Run the file `test/server/server.js` in VSCode with the Node.js debugger.
-   This will start an Express server that delivers the test suite to any
-   browser.
-4. Navigate to `localhost:3000` to run the test suite.
+```
+$ npm run ett-server
+```
+
+Then visit `localhost:3000` to run the suite.
 
 ## License
 
