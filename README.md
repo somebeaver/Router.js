@@ -16,7 +16,6 @@ unopinionated MVC style router functionality for single-page apps.
   - Remembers scroll position for each page
 - Dynamic RESTful parameter substitution (`/example/:type/:id`)
 - View caching
-- Native ES6 modules for route models
 - Pluggable functions
   - For easy integration with the template engine of your choice
   - For template lookups
@@ -118,16 +117,14 @@ const router = new Router({
 
 ## Testing
 
-You need `npm` and Node.js to run router.js tests.
+You need `npm`, Node.js, and VSCode (or equivalent) to run the test suite.
 
-To start an Express server that delivers the test suite to a browser, run:
-
-```
-$ npm run ./test/test-env.js
-```
-
-Then navigate to `http://localhost:3000` in any browser. The tests will
-automatically run and the results will be shown on the page.
+1. Clone the repo
+2. Run `npm i`
+3. Run the file `test/server/server.js` in VSCode with the Node.js debugger.
+   This will start an Express server that delivers the test suite to any
+   browser.
+4. Navigate to `localhost:3000` to run the test suite.
 
 ## License
 

@@ -51,7 +51,7 @@ export class Router {
     this.root = options.root
     this.buttonSelector = '.router-link'
     this.viewContentSelector = '.view-content'
-    this.cacheViews = options.cacheViews || false
+    this.cacheViews = options.cacheViews || true
 
     this.givenRoutes = options.routes
     this.currentRoute = null
@@ -382,7 +382,7 @@ export class Router {
       }
 
       // set the lang
-      document.querySelector('html').setAttrib1ute('lang', route.split('/')[1])
+      document.querySelector('html').setAttribute('lang', route.split('/')[1])
       
       // set the current view params in the router
       this.currentViewParams = params
@@ -421,7 +421,7 @@ export class Router {
       }
 
       // insert the view html into the DOM
-      document.querySelector(this.root).html(viewHtml)
+      document.querySelector(this.root).innerHTML = viewHtml
 
       // set current route and href
       this.currentRoute = route
@@ -445,10 +445,18 @@ export class Router {
    */
   _setRouterLinkActiveStates() {
     // remove active state of all router links
-    document.querySelector(this.buttonSelector).classList.remove('active')
+    let linksInDom = document.querySelectorAll(this.buttonSelector)
+    if (linksInDom.length) {
+      let els = Array.from(linksInDom)
+      els.forEach(el => el.classList.remove('active'))
+    }
 
     // set active state on the links for this exact route
-    document.querySelector(`${this.buttonSelector}[href="${this.currentHref}"]`).classList.add('active')
+    let linksInDomForThisRoute = document.querySelectorAll(`${this.buttonSelector}[href="${this.currentHref}"]`)
+    if (linksInDomForThisRoute.length) {
+      let els = Array.from(linksInDomForThisRoute)
+      els.forEach(el => el.classList.add('active'))
+    }
 
     // create an object of routes with parents for easy lookup
     let routesAndTheirParents = {}
@@ -564,30 +572,30 @@ export class Router {
     })
 
     // on click of .router-link
-    this.__(this.buttonSelector).on('click', true, function(event) {
-      event.preventDefault()
+    // this.__(this.buttonSelector).on('click', true, function(event) {
+    //   event.preventDefault()
 
-      // left click
-      if (event.button === 0) {
-        let hardRefresh = false
+    //   // left click
+    //   if (event.button === 0) {
+    //     let hardRefresh = false
 
-        // on macOS, cmd+click = hard refresh. on all other systems, it's ctrl+click
-        if (document.querySelector('#app').getAttribute('os') === 'darwin') {
-          hardRefresh = event.metaKey
-        } else {
-          hardRefresh = event.ctrlKey
-        }
+    //     // on macOS, cmd+click = hard refresh. on all other systems, it's ctrl+click
+    //     if (document.querySelector('#app').getAttribute('os') === 'darwin') {
+    //       hardRefresh = event.metaKey
+    //     } else {
+    //       hardRefresh = event.ctrlKey
+    //     }
 
-        router.go(this.getAttribute('href'), hardRefresh)
-      }
-    })
+    //     router.go(this.getAttribute('href'), hardRefresh)
+    //   }
+    // })
 
-    // support spacebar when focused
-    this.__(this.buttonSelector).on('keyup', function(event) {
-      if (event.code === 'Space') {
-        this.__(this).trigger('click')
-      }
-    })
+    // // support spacebar when focused
+    // this.__(this.buttonSelector).on('keyup', function(event) {
+    //   if (event.code === 'Space') {
+    //     this.__(this).trigger('click')
+    //   }
+    // })
   }
 
   /**

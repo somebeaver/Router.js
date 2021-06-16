@@ -1,9 +1,10 @@
+/**
+ * Tests the instanciation of new Router objects.
+ */
 import { Router } from '../index.js'
-import { output, pass, fail } from './tools/index.js' 
 
-export async function testInitialization() {
-  output('<h3>Running all tests in Router.js test suite</h3>')
-  window.testStartTime = performance.now()
+export async function initializationTest() {
+  ett.output('<h3>initialization.test.js</h3>')
 
   /**
    * Init a new router instance
@@ -14,7 +15,6 @@ export async function testInitialization() {
       'langs': ['en'],
       'defaultLang': 'en',
       'currentLang': 'en',
-      'cacheViews': true,
       'routes': [
         {
           "route": "/page1",
@@ -39,7 +39,21 @@ export async function testInitialization() {
       ]
     })
 
-    pass('Initialization')
-  } catch (e) { fail(e) }
+    ett.pass('Initialization with all required options')
+  } catch (e) { ett.fail('Initialization with all required options') }
+
+  /**
+   * Init a new router instance
+   */
+  try {
+    const router = new Router({
+      'root': '#view',
+      'langs': ['en'],
+      'defaultLang': 'en',
+      'currentLang': 'en'
+    })
+
+    ett.fail('Initialization without required options should throw error')
+  } catch (e) { ett.pass('Initialization without required options should throw error') }
 
 }

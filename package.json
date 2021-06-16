@@ -4,10 +4,11 @@
   "author": "somebeaver",
   "private": true,
   "scripts": {
-    "test": "./test/server/server.js",
-    "docs": "jsdoc2md src/Router.js > DOCS.md"
+    "docs": "jsdoc2md src/Router.js > DOCS.md",
+    "ett-server": "node ./node_modules/es6-test-tools/index.js"
   },
   "devDependencies": {
+    "es6-test-tools": "github:somebeaver/es6-test-tools",
     "express": "^4.17.1",
     "jsdoc-to-markdown": "^6.0.0"
   }
